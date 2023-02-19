@@ -150,9 +150,4 @@ Below is the color palette used in this application:
 - ![#202020](https://via.placeholder.com/15/202020/000000?text=+) `#202020`
 - ![#474747](https://via.placeholder.com/15/474747/000000?text=+) `#474747`
 
-## License
 
-[![License](https://img.shields.io/:License-MIT-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- MIT License
-- Copyright 2020 © [Maryam Aljanabi](https://github.com/maryamaljanabi)
