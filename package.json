@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Maryam Aljanabi",
-  "license": "MIT",
+  "author": "hamid",
   "dependencies": {
     "admin-bro": "^2.9.0",
     "admin-bro-expressjs": "^2.1.1",

@@ -12,14 +12,14 @@ router.use(csrfProtection);
 //GET: display abous us page
 router.get("/about-us", (req, res) => {
   res.render("pages/about-us", {
-    pageName: "About Us",
+    pageName: "درباره ما",
   });
 });
 
 //GET: display shipping policy page
 router.get("/shipping-policy", (req, res) => {
   res.render("pages/shipping-policy", {
-    pageName: "قوانین و مقررات",
+    pageName: "حمل و نقل",
   });
 });
 

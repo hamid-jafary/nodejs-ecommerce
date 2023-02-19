@@ -52,8 +52,8 @@
                 ><i class="fa fa-minus-square" aria-hidden="true"></i
               ></a>
             </td>
-            <td>$<%= product.price %></td>
-            <td>$<%= product.totalPrice %></td>
+            <td>تومان<%= product.price %></td>
+            <td>تومان<%= product.totalPrice %></td>
             <td>
               <a
                 href="/removeAll/<%=product._id%>"
@@ -68,12 +68,12 @@
     </div>
   </div>
 <hr>
-  <div class="row mt-4 mr-auto">
+  <div class="row mt-4 mr-auto" style="text-align:center">
     <div class="col-md-11 col-sm-12 m-auto">
       <strong>مجموع: <%= cart.totalCost %> </strong>
     </div>
   </div>
-  <div class="row mt-2 mr-auto">
+  <div class="row mt-2 mr-auto" style="text-align: center;">
     <div class="col-md-11 col-sm-12 m-auto">
       <a href="/checkout" class="btn btn-dark button-style">پرداخت</a>
     </div>

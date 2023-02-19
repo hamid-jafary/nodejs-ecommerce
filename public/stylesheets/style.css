@@ -86,7 +86,7 @@ a:hover,
 
 .logo-title {
   font-weight: 600;
-  margin: 4px 1px;
+  margin: 10px 1px;
 }
 
 .logo-img {
@@ -386,7 +386,6 @@ ul {
   color: var(--ivory);
   background-color: var(--black);
   padding: 1em 1em 0.2em 1em;
-  border-bottom: 5px var(--dark-blue) solid;
 }
 .bottom-footer {
   font-size: 14px;
