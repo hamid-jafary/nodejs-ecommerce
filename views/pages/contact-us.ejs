@@ -1,0 +1,115 @@
+<%- include ../partials/header %> <%- include ../partials/categories-navbar %>
+
+<div class="container" style="direction: rtl;">
+  <div class="row">
+    <div class="col-lg-8 col-md-12 m-auto">
+      <h1 class="mt-4 mb-4 text-center">تماس با ما</h1>
+      <!-- Flash message -->
+      <% if (successMsg != null && successMsg) { %>
+        <div id="success" class="alert alert-success">
+          <%= successMsg %>
+        </div>
+        <% } %>
+    </div>
+    <div class="col-lg-8 col-md-12 text-justify m-auto">
+      <!-- Introduction -->
+    <div class="mt-4 mb-4">
+      <p>شما همیشه میتوانید با ما در تماس باشید برای ارتباط با ما از روش های زیر استفاده کنید<br />
+        همچنین میتوانید در ایام هفته از فروشگاه ما دیدن کنید. <i>ساعت کاری ما ۹ صبح تا ۶ بعدازظهر</i> <br />
+        ما در ایام تعطیل هفته هم به ایمیل ها پاسخ میدهیم
+      </p>
+    </div>
+      <!-- Email contacts -->
+      <div class="mt-4 mb-4">
+        <p>
+          <h6><i>ایمیل ها</i></h6>
+        </p>
+        <p>
+          سوالات عمومی :
+          <a href="mailto:general@email.com">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <u>general@email.com</u>
+          </a>
+        </p>
+        <p>
+          مشکلات خرید ها:
+          <a href="mailto:orders@email.com">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <u>orders@email.com</u>
+          </a>
+        </p>
+        <p>
+          پشتیبانی فنی:
+          <a href="mailto:support@email.com">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <u>support@email.com</u>
+          </a>
+        </p>
+      </div>
+      <!-- Phone contacts -->
+      <div class="mt-4 mb-4">
+        <p>
+          <h6><i>شماره تلفن های ما</i></h6>
+        </p>
+        <p>
+          مرکز پاسخگویی اول :
+          <a href="tel:31432-023">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            31432-023
+           </a>
+        </p>
+        <p>
+          مرکز پاسخگویی دوم :
+          <a href="tel:02334521562">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            02334521562
+           </a>
+        </p>
+        <p>
+          شاد :
+          <a href="tel:09196573586">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            09196573586
+           </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact us form -->
+    <div class="col-lg-8 col-md-12 m-auto" style="text-align: right;">
+      <div class="mt-5 mb-4">
+        <h2>تماس با ما</h2>
+        <!-- Error flash message -->
+        <% if(errorMsg!=null && errorMsg.length>0) {%>
+          <div id="flash-msg" class="alert alert-danger">
+            <% errorMsg.forEach((message) => { %>
+            <p>
+              <%=message %>
+            </p>
+            <%}) %>
+          </div>
+          <%}%>
+        <form action="/pages/contact-us" method="POST">
+          <div class="form-group">
+            <label for="name">نام کاربری</label>
+            <input type="name" class="form-control" name="name" id="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">آدرس ایمیل</label>
+            <input type="email" class="form-control" name="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">پیام شما</label>
+            <textarea class="form-control" name="message" id="message" rows="5" placeholder="لطفا پیام خود را در اینجا بنویسید..." required></textarea>
+          </div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn btn-primary button-style">
+            فرستادن
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include ../partials/footer %>

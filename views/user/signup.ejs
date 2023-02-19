@@ -1,0 +1,57 @@
+<%- include ../partials/header %> <%- include ../partials/categories-navbar %>
+
+<div class="container" style="direction: rtl;">
+  <div class="row">
+    <div class="col-md-8 m-auto" >
+      <h1 class="mt-4 mb-4">صفحه ثبت نام</h1>
+      <% if(errorMsg != null && errorMsg.length>0) {%>
+      <div id="flash-msg" class="alert alert-danger">
+        <%=errorMsg %>
+      </div>
+      <%}%>
+      <form action="/user/signup" method="POST">
+        <div class="form-group">
+          <label for="name">نام کاربری</label>
+          <input
+            type="name"
+            class="form-control"
+            name="name"
+            id="name"
+            placeholder="نام کاربری"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">آدرس ایمیل</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="آدرس ایمیل" />
+        </div>
+        <div class="form-group">
+          <label for="password">رمز عبور</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="رمز عبور"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">تایید رمز عبور</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password2"
+            id="password2"
+            placeholder="تایید رمز عبور"
+          />
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <button type="submit" class="btn btn-primary button-style">
+          ثبت نام
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include ../partials/footer %>
