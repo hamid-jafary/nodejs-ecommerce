@@ -3,13 +3,13 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const logger = require("morgan");
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const Category = require("./models/category");
-var MongoStore = require("connect-mongo")(session);
+let MongoStore = require("connect-mongo")(session);
 const connectDB = require("./config/db");
 
 const app = express();
@@ -25,7 +25,7 @@ app.set("view engine", "ejs");
 const adminRouter = require("./routes/admin");
 app.use("/admin", adminRouter);
 
-app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -63,7 +63,7 @@ app.use(async (req, res, next) => {
 
 // add breadcrumbs
 get_breadcrumbs = function (url) {
-  var rtn = [{ name: "Home", url: "/" }],
+  let rtn = [{ name: "Home", url: "/" }],
     acc = "", // accumulative url
     arr = url.substring(1).split("/");
 

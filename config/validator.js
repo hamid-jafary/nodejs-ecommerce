@@ -35,7 +35,7 @@ const userContactUsValidationRules = () => {
 const validateSignup = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    var messages = [];
+    let messages = [];
     errors.array().forEach((error) => {
       messages.push(error.msg);
     });

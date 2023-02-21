@@ -43,18 +43,15 @@ router.get("/contact-us", (req, res) => {
   });
 });
 
-//POST: handle contact us form logic using nodemailer
 router.post(
   "/contact-us",
   [userContactUsValidationRules(), validateContactUs],
   (req, res) => {
-    // instantiate the SMTP server
     const smtpTrans = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       secure: false,
       auth: {
-        // company's email and password
         user: "6a1630570d61fe",
         pass: "58f3f7071a2f5f",
       },

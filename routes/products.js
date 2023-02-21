@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
 const Category = require("../models/category");
-var moment = require("moment");
+let moment = require("moment");
 
 // GET: display all products
 router.get("/", async (req, res) => {

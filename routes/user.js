@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const csrf = require("csurf");
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
+let passport = require("passport");
+let LocalStrategy = require("passport-local").Strategy;
 const Product = require("../models/product");
 const Order = require("../models/order");
 const Cart = require("../models/cart");
@@ -48,7 +48,7 @@ router.post(
       }
       // redirect to the previous URL
       if (req.session.oldUrl) {
-        var oldUrl = req.session.oldUrl;
+        let oldUrl = req.session.oldUrl;
         req.session.oldUrl = null;
         res.redirect(oldUrl);
       } else {
@@ -86,16 +86,15 @@ router.post(
   ],
   async (req, res) => {
     try {
-      // cart logic when the user logs in
       console.log("hell")
       let cart = await Cart.findOne({ user: req.user._id });
-      // if there is a cart session and user has no cart, save it to the user's cart in db
+
       if (req.session.cart && !cart) {
         const cart = await new Cart(req.session.cart);
         cart.user = req.user._id;
         await cart.save();
       }
-      // if user has a cart in db, load it to session
+
       if (cart) {
         req.session.cart = cart;
       }
@@ -126,7 +125,7 @@ router.get("/profile", middleware.isLoggedIn, async (req, res) => {
       orders: allOrders,
       errorMsg,
       successMsg,
-      pageName: "User Profile",
+      pageName: "پروفایل کاربر",
     });
   } catch (err) {
     console.log(err);

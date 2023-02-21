@@ -21,7 +21,7 @@ NOTE: Please read the RUN section before opening an issue.
 
 https://uni-project.onrender.com/
 
-The website resembles a real store and you can add products to your cart and pay for them. If you want to try the checkout process, you can use the dummy card number provided by stripe for testing which is 4242 4242 4242 4242 with any expiration date, CVC, and zip codes. Please <u><b>DO NOT</b></u> provide real card number and data.
+The website resembles a real store and you can add products to your cart and pay for them.
 
 
 ## Run
@@ -32,7 +32,6 @@ To run this application, you have to set your own environmental variables. For s
 
 - SESSION_SECRET: a secret message for the session. You can use any string here.
 
-- STRIPE_PRIVATE_KEY: the stripe package is used to process payment in the checkout route. To get this, you should set up a stripe account and put your private API key here.
 
 - GMAIL_EMAIL, GMAIL_PASSWORD: the email and password given to nodemailer to send/receive the email. Please put a real email and password here because you will receive the messages sent from the contact us form on this email.
 
@@ -40,7 +39,6 @@ To run this application, you have to set your own environmental variables. For s
 
 - ADMIN_COOKIE_NAME, ADMIN_COOKIE_PASSWORD: the cookie name and password used in the AdminBro authentication method. You can put any strings here.
 
-After you've set these environmental variables in the .env file at the root of the project, you need to navigate to the "seedDB" folder and run "node category-seed.js" and "node products-seed.js" to fill your empty MongoDB Atlas database.
 
 Now you can run "npm start" in the terminal and the application should work.
 
@@ -53,7 +51,6 @@ The application is built with:
 - Express version 4.16.1
 - Bootstrap version 4.4.1
 - FontAwesome version 5.13.0
-- Stripe API v3: used for payment in the checkout page
 - Mapbox API: used to show the map in the about us page
 - AdminBro: used and customized to implement the admin panel
 - Nodemailer: used to send emails from the contact us form

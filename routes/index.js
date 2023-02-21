@@ -24,11 +24,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET: add a product to the shopping cart when "Add to cart" button is pressed
 router.get("/add-to-cart/:id", async (req, res) => {
   const productId = req.params.id;
   try {
-    // get the correct cart, either from the db, session, or an empty cart.
     let user_cart;
     if (req.user) {
       user_cart = await Cart.findOne({ user: req.user._id });
@@ -49,13 +47,12 @@ router.get("/add-to-cart/:id", async (req, res) => {
     const product = await Product.findById(productId);
     const itemIndex = cart.items.findIndex((p) => p.productId == productId);
     if (itemIndex > -1) {
-      // if product exists in the cart, update the quantity
       cart.items[itemIndex].qty++;
       cart.items[itemIndex].price = cart.items[itemIndex].qty * product.price;
       cart.totalQty++;
       cart.totalCost += product.price;
     } else {
-      // if product does not exists in cart, find it in the db to retrieve its price and add new item
+     
       cart.items.push({
         productId: productId,
         qty: 1,
@@ -67,7 +64,6 @@ router.get("/add-to-cart/:id", async (req, res) => {
       cart.totalCost += product.price;
     }
 
-    // if the user is logged in, store the user's id and save cart to the db
     if (req.user) {
       cart.user = req.user._id;
       await cart.save();
@@ -84,32 +80,28 @@ router.get("/add-to-cart/:id", async (req, res) => {
 // GET: view shopping cart contents
 router.get("/shopping-cart", async (req, res) => {
   try {
-    // find the cart, whether in session or in db based on the user state
     let cart_user;
     if (req.user) {
       cart_user = await Cart.findOne({ user: req.user._id });
     }
-    // if user is signed in and has cart, load user's cart from the db
     if (req.user && cart_user) {
       req.session.cart = cart_user;
       return res.render("shop/shopping-cart", {
         cart: cart_user,
-        pageName: "Shopping Cart",
+        pageName: "سبد خرید",
         products: await productsFromCart(cart_user),
       });
     }
-    // if there is no cart in session and user is not logged in, cart is empty
     if (!req.session.cart) {
       return res.render("shop/shopping-cart", {
         cart: null,
-        pageName: "Shopping Cart",
+        pageName: "سبد خرید",
         products: null,
       });
     }
-    // otherwise, load the session's cart
     return res.render("shop/shopping-cart", {
       cart: req.session.cart,
-      pageName: "Shopping Cart",
+      pageName: "سبد خرید",
       products: await productsFromCart(req.session.cart),
     });
   } catch (err) {
@@ -205,14 +197,14 @@ router.get("/checkout", middleware.isLoggedIn, async (req, res) => {
     return res.redirect("/shopping-cart");
   }
   //load the cart with the session's cart's id from the db
-  cart = await Cart.findById(req.session.cart._id);
-
+  let cart = await Cart.findById(req.session.cart._id);
+  console.log(cart)
   const errorMsg = req.flash("error")[0];
   res.render("shop/checkout", {
     total: cart.totalCost,
     csrfToken: req.csrfToken(),
     errorMsg,
-    pageName: "Checkout",
+    pageName: "پرداخت",
   });
 });
 
